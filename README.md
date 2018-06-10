@@ -1,5 +1,3 @@
 # webalbum
 
-#Install with npm:
-#npm install
-
+[![npm][npm]][npm install]
