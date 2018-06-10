@@ -1,0 +1,15 @@
+extends layout
+block scripts
+    script(src="assets/client.js")
+block content
+    div.container
+        div
+            h3 My albums and photos
+            div.my-albums
+                ul.albums
+                    each val in albums
+                        li
+                            a(onclick='getPhotosByAlbumId(' + val.id + ')' href='javascript:;')= val.title
+                        //- li= val.userId,val.title,val.id
+                div#album
+            div#photo

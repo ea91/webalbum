@@ -1,0 +1,18 @@
+extends layout
+block content
+  div.container.mt-48
+    div
+      h3 Login
+      form(method='POST' action='/login')
+        div.login
+          #error
+            if error
+              span.error Error
+          div.form-group
+            label(for='email') Email: 
+            input(type='text' id='email' placeholder='email' name='email')
+          div.form-group
+            label(for='password') Password: 
+            input(type='password' id='password' placeholder='password' name='password')
+        button(type='submit') Log in
+

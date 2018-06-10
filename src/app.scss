@@ -1,0 +1,159 @@
+$breakpoints: (
+  'small':  959px,
+) !default;
+
+
+@mixin respond-to($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+      @media (max-width: map-get($breakpoints, $breakpoint)) {
+        @content;
+      }
+    }
+   
+    @else {
+      @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+          + "Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+  }
+
+body{
+    font-family: sans-serif;
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: row wrap;
+        @include respond-to('small') {
+            display: inherit;
+        }
+    }
+
+    form{
+        @include respond-to('small') {
+            width: 100%;
+        }
+        .login{
+            margin: 0px 24px;
+            @include respond-to('small') {
+                margin: 0px;
+            }
+        }
+        .error{
+            color:red;
+            text-align: left;
+        }
+    
+        .form-group{
+            display: block;
+            margin-top: 8px;
+            label{
+                line-height: 24px;
+                font-size: 16px;
+                @include respond-to('small') {
+                    font-size: 14px;
+                    width: 100%;
+                    display: inline-block;
+                    line-height: 2;
+                }
+            }
+            input{
+                margin-left: 16px;
+                float: right;
+                @include respond-to('small') {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+    
+        button{
+            margin-top: 8px;
+            float: right;
+            @include respond-to('small') {
+                margin-top: 16px;
+                width: 100%;
+            }
+        }
+    }
+
+    .mt-48{
+        margin-top: 48px;
+    }
+
+    .my-albums{
+        margin: 0 auto;
+        margin-bottom: 24px;
+        display: flex;
+        align-content: space-between;
+        @include respond-to('small') {
+            display: block;
+        }
+        #album{
+            width: 600px;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-align-items: flex-start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            -webkit-align-content: flex-start;
+            -ms-flex-line-pack: start;
+            align-content: flex-start;
+            overflow: auto;
+            text-align: center;
+            -webkit-transition: opacity .75s;
+            transition: opacity .75s;
+            cursor: pointer;
+            @include respond-to('small') {
+                width: auto;
+            }
+            img{
+                width: calc(25% - 16px);
+                padding: 8px;
+                display: inline-block;
+                opacity: .75;
+                -webkit-transition: opacity .5s;
+                transition: opacity .5s;
+                @include respond-to('small') {
+                    width: calc(50% - 16px);
+                    &:nth-child(n+5){
+                        display: none;
+                    }
+                }
+            }
+        }
+    
+        .albums{
+            max-width: 400px;
+            list-style: none;
+            padding: 0px;
+            @include respond-to('small') {
+                max-width: inherit;
+            }
+            li{
+                white-space: nowrap;
+                width: 250px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding: 8px 0px;
+                @include respond-to('small') {
+                    text-align: center;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    #photo{
+        img{
+            @include respond-to('small') {
+                max-width: 100%;
+                padding: 8px 0px;
+            }
+        }
+    }
+    
+}
