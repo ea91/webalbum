@@ -18,6 +18,7 @@ app.set('view engine', 'pug')
 var routeLogin = require('./app_server/route/LoginRoute');
 var routeMyAlbum = require('./app_server/route/MyAlbumsRoute');
 
+app.use('/', routeLogin);
 app.use('/login', routeLogin);
 app.use('/myalbums', routeMyAlbum);
 
